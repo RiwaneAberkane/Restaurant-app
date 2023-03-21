@@ -1,0 +1,8 @@
+.restaurantsList{
+    width: 90%;
+    margin: auto;
+    /* GRID---------------- */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: auto;
+}

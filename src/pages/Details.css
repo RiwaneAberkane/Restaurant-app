@@ -1,0 +1,17 @@
+/* h1, p, h2, h3{
+    color: black;
+    margin: 15px;
+} */
+
+button{
+    background-color: black;
+    color: white;
+}
+
+.details{
+    background-color: rgb(196, 196, 196);
+    border-radius: 10px;
+    margin: 0 10% 0 10%;
+    text-align: center;
+    padding: 10px;
+}
