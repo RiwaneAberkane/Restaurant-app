@@ -1,4 +1,4 @@
-.restaurantsList{
+.favoris_list{
     width: 90%;
     margin: auto;
     
@@ -7,3 +7,9 @@
     grid-template-columns: repeat(3, 1fr);
     padding: auto;
 }
+
+.noFavorites{
+    font-size: 50px;
+    text-align: center;
+}
+

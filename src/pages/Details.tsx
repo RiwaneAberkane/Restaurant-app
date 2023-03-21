@@ -1,15 +1,12 @@
 import React, { useContext} from 'react'
 import {useParams } from "react-router-dom";
 import AddOrRemoveFavoris from '../components/AddOrRemoveFavoris';
-import Navbar from '../components/Navbar';
-import { useReactFavorisContext } from '../context/FavorisContext';
 import { RestaurantContext } from '../context/RestaurantContext';
 import './Details.css'
 
 function Details() {
-    let { id } = useParams();
-    console.log(id);
 
+    let { id } = useParams();
     const {restaurants} = useContext(RestaurantContext); 
     const restaurantDetails = restaurants.find(restau => restau.id.toString() === id)
     console.log(restaurantDetails);
@@ -19,10 +16,13 @@ function Details() {
   return (
     <div>
          <div className='details'>
-          <h1>{restaurantDetails.name}</h1>
-          <p>{restaurantDetails.description_long}</p>
+          <div className='description'>
+            <h1>{restaurantDetails.name}</h1>
+            <p>{restaurantDetails.description_long}</p>
+            <AddOrRemoveFavoris restaurantData={restaurantDetails}/>
+          </div>
+         
 
-          <AddOrRemoveFavoris restaurantData={restaurantDetails}/>
           
           <h2>Menu</h2>
           <h3>Entrées</h3>

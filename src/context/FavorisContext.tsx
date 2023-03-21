@@ -40,7 +40,7 @@ export const ContextResto = ({children}: contextProps) =>{
     //     setFavourites([...favourites, restaurant]); 
     // } 
 
-    const saveToLocalStorages = (items : Array<RestaurantType>) =>{
+  const saveToLocalStorages = (items : Array<RestaurantType>) =>{
   const key = localStorage.length.toString();
   localStorage.setItem(key, 'restaurantData' + JSON.stringify(items));
 }

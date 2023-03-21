@@ -9,6 +9,12 @@
     justify-content: space-between;
 }
 
+.logo{
+    width: 6em;
+    height: 6em;
+    margin: 5px;
+}
+
 .leftPart{
     display: flex;
     align-items: center;

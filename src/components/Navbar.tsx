@@ -6,8 +6,8 @@ export default function Navbar() {
   return (
     <div className='navbar'>
       <div className='leftPart'>
-        {/* <img src={img1} alt="" /> */}
-        <Link to = {'/'}><h1 className='title_app'>App Restaurant</h1></Link>
+        <Link to = {'/'}><img className='logo' src={img1} alt="" /></Link>
+        <h1 className='title_app'>App Restaurant</h1>
       </div>
       <Link to = {'/favoris'}><button className='button_favoris'>Favoris</button></Link>
     </div>
