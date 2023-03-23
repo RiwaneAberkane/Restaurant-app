@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { useReactFavoritesContext } from "../context/FavorisContext";
 import { RestaurantType } from "../models/RestaurantType";
-import Modal from "./Modal";
+import { Modal } from "./Modal";
 
-type addOrRemoveFavorisProps = {
+type AddOrRemoveFavorisProps = {
   restaurantData: RestaurantType;
 };
 
-const AddOrRemoveFavoris = ({ restaurantData }: addOrRemoveFavorisProps) => {
+export const AddOrRemoveFavoris = ({
+  restaurantData,
+}: AddOrRemoveFavorisProps) => {
   const [showModal, setShowModal] = useState(false);
   const { favorites, addToFavs } = useReactFavoritesContext();
   const [initialValues, setInitialValues] = useState<RestaurantType | null>(
@@ -16,10 +18,7 @@ const AddOrRemoveFavoris = ({ restaurantData }: addOrRemoveFavorisProps) => {
   );
 
   const Verify = (id: number) => {
-    let verif = favorites.some(
-      (restoIdFav) => restoIdFav === restaurantData.id
-    );
-    return verif;
+    return favorites.some((restoIdFav) => restoIdFav === restaurantData.id);
   };
 
   return (
@@ -42,11 +41,9 @@ const AddOrRemoveFavoris = ({ restaurantData }: addOrRemoveFavorisProps) => {
         show={showModal}
         initialValues={initialValues}
         handleClose={() => {
-          setShowModal(false), setInitialValues(null);
+          setShowModal(false);
         }}
       />
     </div>
   );
 };
-
-export default AddOrRemoveFavoris;

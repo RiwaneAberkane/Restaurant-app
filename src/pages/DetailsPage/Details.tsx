@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
-import AddOrRemoveFavoris from "../../components/AddOrRemoveFavoris";
+import { AddOrRemoveFavoris } from "../../components/AddOrRemoveFavoris";
 import { RestaurantContext } from "../../context/RestaurantContext";
 import "./Details.css";
 
@@ -10,7 +10,6 @@ export const Details = () => {
   const restaurantDetails = restaurants.find(
     (restau) => restau.id.toString() === id
   );
-  console.log(restaurantDetails);
 
   if (!restaurantDetails) return null;
 

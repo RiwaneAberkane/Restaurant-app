@@ -10,26 +10,17 @@ export const Favoris = () => {
   const { restaurants } = useContext(RestaurantContext);
 
   if (favorites.length === 0)
-    return (
-      <div>
-        <h1 className="noFavorites">No Favorites</h1>
-      </div>
-    );
+    return <h1 className="noFavorites">No Favorites</h1>;
 
   const getFavorite = (restaurants: RestaurantType[]): RestaurantType[] => {
-    const restaurantsFavorites: RestaurantType[] = restaurants.filter(
-      (restau) => favorites.includes(restau.id)
-    );
-    return restaurantsFavorites;
+    return restaurants.filter((restau) => favorites.includes(restau.id));
   };
 
   return (
-    <div>
-      <div className="favoris_list">
-        {getFavorite(restaurants).map((favorite: RestaurantType) => (
-          <RestaurantCard restaurantData={favorite} key={favorite.id} />
-        ))}
-      </div>
+    <div className="favoris_list">
+      {getFavorite(restaurants).map((favorite: RestaurantType) => (
+        <RestaurantCard restaurantData={favorite} key={favorite.id} />
+      ))}
     </div>
   );
 };

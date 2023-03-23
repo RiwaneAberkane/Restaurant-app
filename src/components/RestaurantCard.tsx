@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { RestaurantType } from "../models/RestaurantType";
 import "./RestaurantCard.css";
-import AddOrRemoveFavoris from "./AddOrRemoveFavoris";
+import { AddOrRemoveFavoris } from "./AddOrRemoveFavoris";
 
 type RestaurantCardProps = {
   restaurantData: RestaurantType;

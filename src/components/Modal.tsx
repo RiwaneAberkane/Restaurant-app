@@ -38,5 +38,3 @@ export const Modal = ({ show, handleClose, initialValues }: modalProps) => {
     </div>
   );
 };
-
-export default Modal;

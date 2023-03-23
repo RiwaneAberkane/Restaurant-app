@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { RestaurantType } from "../models/RestaurantType";
 
-type favoritesContextProps = {
+type FavoritesContextProps = {
   children: React.ReactNode;
 };
 
@@ -18,14 +18,14 @@ export const useReactFavoritesContext = () => {
   return contextRest;
 };
 
-export const ContextFavorites = ({ children }: favoritesContextProps) => {
+export const FavoritesContext = ({ children }: FavoritesContextProps) => {
   const [favorites, setFavorites] = useState<number[]>([]);
 
   useEffect(() => {
-    localStorage.setItem("restaurants", JSON.stringify(favorites));
+    localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
-  let seeFavs = JSON.parse(localStorage.getItem("restaurants") || "[]");
+  let seeFavs = JSON.parse(localStorage.getItem("favorites") || "[]");
   useEffect(() => {
     if (favorites) {
       setFavorites(seeFavs);
