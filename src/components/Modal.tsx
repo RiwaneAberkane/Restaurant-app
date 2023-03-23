@@ -1,28 +1,42 @@
-import { useReactFavorisContext } from '../context/FavorisContext';
-import './Modal.css'
+import { useReactFavoritesContext } from "../context/FavorisContext";
+import "./Modal.css";
 
-type modalProps ={
-show : boolean,
-initialValues : any,
-handleClose: ()=> void
-}
+type modalProps = {
+  show: boolean;
+  initialValues: any;
+  handleClose: () => void;
+};
 
-function Modal({show, handleClose, initialValues} : modalProps) {
-  const {remove} = useReactFavorisContext();
+export const Modal = ({ show, handleClose, initialValues }: modalProps) => {
+  const { remove } = useReactFavoritesContext();
 
-    if (!show) return null;
-    return (
-      <div className="modal">
-        <section className="modal-main">
-          <button className="close-btn" type="button" onClick={() => handleClose()}>X</button>
-          <h3 className='sureRemove'>Do you want to remove ?</h3>
-            <div className="button">
-              <button type="submit" onClick={() =>{remove(initialValues.restaurantData); handleClose()}}>YES</button>
-              <button onClick={() => handleClose()}>NO</button>
-            </div>
-        </section>
-      </div>
-  )
-}
+  if (!show) return null;
+  return (
+    <div className="modal">
+      <section className="modal-main">
+        <button
+          className="close-btn"
+          type="button"
+          onClick={() => handleClose()}
+        >
+          X
+        </button>
+        <h3 className="sureRemove">Do you want to remove ?</h3>
+        <div className="button">
+          <button
+            type="submit"
+            onClick={() => {
+              remove(initialValues);
+              handleClose();
+            }}
+          >
+            YES
+          </button>
+          <button onClick={() => handleClose()}>NO</button>
+        </div>
+      </section>
+    </div>
+  );
+};
 
-export default Modal
+export default Modal;
