@@ -22,8 +22,6 @@ function Details() {
             <AddOrRemoveFavoris restaurantData={restaurantDetails}/>
           </div>
          
-
-          
           <h2>Menu</h2>
           <h3>Entrées</h3>
             <p>{restaurantDetails.menu.entrees[0]}</p>

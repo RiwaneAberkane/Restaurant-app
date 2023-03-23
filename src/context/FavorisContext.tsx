@@ -8,7 +8,6 @@ type contextProps = {
 type CreateContextRestoType ={
     favourites: RestaurantType[];
     addToFavs : (restaurant : RestaurantType) => void;
-    // remove : (id : number) => void;
     remove : (restaurant : RestaurantType) => void;
 }
 
@@ -33,18 +32,10 @@ export const ContextResto = ({children}: contextProps) =>{
         }}, [])
 
     
-
-    // const addToFavs = (restaurant: RestaurantType) =>{
-    //     // let favs = [...favourites];
-    //     // let favs1 = favs.concat(restaurant)
-    //     setFavourites([...favourites, restaurant]); 
-    // } 
-
-  const saveToLocalStorages = (items : Array<RestaurantType>) =>{
-  const key = localStorage.length.toString();
-  localStorage.setItem(key, 'restaurantData' + JSON.stringify(items));
-}
-
+    const saveToLocalStorages = (items : Array<RestaurantType>) =>{
+    const key = localStorage.length.toString();
+    localStorage.setItem(key, 'restaurantData' + JSON.stringify(items));
+    }
 
     const addToFavs = (restaurant : RestaurantType) => {
         const newFavouriteList = [...favourites, restaurant ]
@@ -53,21 +44,13 @@ export const ContextResto = ({children}: contextProps) =>{
         }else{
         setFavourites(newFavouriteList);
         saveToLocalStorages(newFavouriteList);
-
         }
 }
 
-    // const remove = (id : number) => {
-    //     let removeFavs = [...favourites];
-    //     let removeFavs2 = removeFavs.filter(
-    //         (fav) => fav.id !== id)
-    //         setFavourites(removeFavs2); 
-    // }
-
-const remove = (restaurant : RestaurantType) =>{
-  const newFavouriteList =  favourites.filter((favourite) => favourite.id !== restaurant.id);
-  setFavourites(newFavouriteList);
-}
+    const remove = (restaurant : RestaurantType) =>{
+    const newFavouriteList =  favourites.filter((favourite) => favourite.id !== restaurant.id);
+    setFavourites(newFavouriteList);
+    }
 
 
 return (
