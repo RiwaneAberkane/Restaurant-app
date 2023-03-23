@@ -1,4 +1,4 @@
-import { useReactFavoritesContext } from "../context/FavorisContext";
+import { useFavoritesContext } from "../context/FavorisContext";
 import "./Modal.css";
 
 type modalProps = {
@@ -8,7 +8,7 @@ type modalProps = {
 };
 
 export const Modal = ({ show, handleClose, initialValues }: modalProps) => {
-  const { remove } = useReactFavoritesContext();
+  const { remove } = useFavoritesContext();
 
   if (!show) return null;
   return (

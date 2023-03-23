@@ -13,7 +13,7 @@ type CreateFavoritesContext = {
 
 const CreateContextFavorites = createContext({} as CreateFavoritesContext);
 
-export const useReactFavoritesContext = () => {
+export const useFavoritesContext = () => {
   const contextRest = useContext(CreateContextFavorites);
   return contextRest;
 };

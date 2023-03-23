@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { useReactFavoritesContext } from "../context/FavorisContext";
+import { useFavoritesContext } from "../context/FavorisContext";
 import { RestaurantType } from "../models/RestaurantType";
 import { Modal } from "./Modal";
 
@@ -12,7 +12,7 @@ export const AddOrRemoveFavoris = ({
   restaurantData,
 }: AddOrRemoveFavorisProps) => {
   const [showModal, setShowModal] = useState(false);
-  const { favorites, addToFavs } = useReactFavoritesContext();
+  const { favorites, addToFavs } = useFavoritesContext();
   const [initialValues, setInitialValues] = useState<RestaurantType | null>(
     null
   );

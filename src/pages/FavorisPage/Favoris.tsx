@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { RestaurantCard } from "../../components/RestaurantCard";
-import { useReactFavoritesContext } from "../../context/FavorisContext";
+import { useFavoritesContext } from "../../context/FavorisContext";
 import { RestaurantContext } from "../../context/RestaurantContext";
 import { RestaurantType } from "../../models/RestaurantType";
 import "./Favoris.css";
 
 export const Favoris = () => {
-  const { favorites } = useReactFavoritesContext();
+  const { favorites } = useFavoritesContext();
   const { restaurants } = useContext(RestaurantContext);
 
   if (favorites.length === 0)
