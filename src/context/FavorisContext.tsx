@@ -1,67 +1,62 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { RestaurantType } from "../models/RestaurantType";
 
-type contextProps = {
-    children: React.ReactNode
-}
+type FavoritesContextProps = {
+  children: React.ReactNode;
+};
 
-type CreateContextRestoType ={
-    favourites: RestaurantType[];
-    addToFavs : (restaurant : RestaurantType) => void;
-    remove : (restaurant : RestaurantType) => void;
-}
+type CreateFavoritesContext = {
+  favorites: number[];
+  addToFavs: (restaurant: RestaurantType) => void;
+  remove: (restaurant: RestaurantType) => void;
+};
 
-const CreateContextResto = createContext({} as CreateContextRestoType);
+const CreateContextFavorites = createContext({} as CreateFavoritesContext);
 
-export const useReactFavorisContext = () => {
-    const contextRest = useContext(CreateContextResto);
-    return contextRest;
-}
+export const useFavoritesContext = () => {
+  const contextRest = useContext(CreateContextFavorites);
+  return contextRest;
+};
 
-export const ContextResto = ({children}: contextProps) =>{
-    const [favourites, setFavourites] = useState<RestaurantType[]>([]);
+export const FavoritesContext = ({ children }: FavoritesContextProps) => {
+  const [favorites, setFavorites] = useState<number[]>([]);
 
-    useEffect(() =>{
-        localStorage.setItem('restaurants', JSON.stringify(favourites));
-    }, [favourites])
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
-    let seeFavs = JSON.parse(localStorage.getItem('restaurants') || "[]");
-    useEffect(() => {
-        if(favourites){
-            setFavourites(seeFavs)
-        }}, [])
-
-    
-    const saveToLocalStorages = (items : Array<RestaurantType>) =>{
-    const key = localStorage.length.toString();
-    localStorage.setItem(key, 'restaurantData' + JSON.stringify(items));
+  let seeFavs = JSON.parse(localStorage.getItem("favorites") || "[]");
+  useEffect(() => {
+    if (favorites) {
+      setFavorites(seeFavs);
     }
+  }, []);
 
-    const addToFavs = (restaurant : RestaurantType) => {
-        const newFavouriteList = [...favourites, restaurant ]
-        if(favourites.includes(restaurant)){
-            return null
-        }else{
-        setFavourites(newFavouriteList);
-        saveToLocalStorages(newFavouriteList);
-        }
-}
-
-    const remove = (restaurant : RestaurantType) =>{
-    const newFavouriteList =  favourites.filter((favourite) => favourite.id !== restaurant.id);
-    setFavourites(newFavouriteList);
+  const addToFavs = (restaurant: RestaurantType) => {
+    const newFavouriteList: number[] = [...favorites, restaurant.id];
+    if (favorites.includes(restaurant.id)) {
+      return null;
+    } else {
+      setFavorites(newFavouriteList);
     }
+  };
 
+  const remove = (restaurant: RestaurantType) => {
+    const newFavouriteList = favorites.filter(
+      (favorites) => favorites !== restaurant.id
+    );
+    setFavorites(newFavouriteList);
+  };
 
-return (
-    <CreateContextResto.Provider
-    value={{
+  return (
+    <CreateContextFavorites.Provider
+      value={{
         addToFavs,
         remove,
-        favourites,
-    }}>
-        {children}
-    </CreateContextResto.Provider>
-    )
-}
-
+        favorites,
+      }}
+    >
+      {children}
+    </CreateContextFavorites.Provider>
+  );
+};
